@@ -1,5 +1,9 @@
 module.exports = {
   configureWebpack: {
+    output: {
+      filename: '[name].js',
+      publicPath: '/',
+    },
     plugins: [
     ],
     module: {
@@ -7,7 +11,11 @@ module.exports = {
         {
           test: /\.less$/,
           loader: 'less-loader', // compiles Less to CSS
-        }
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/,
+          loader: 'file-loader',
+        },
       ],
     },
   },

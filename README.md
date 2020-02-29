@@ -3,6 +3,7 @@ a simple single-spa sample.
 
 ## Install and Run
 Run the following commands respectively on four terminals.
+
 `cd app1 && yarn` then `yarn serve`
 
 `cd app2 && yarn` then `yarn serve`

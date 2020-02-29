@@ -126,7 +126,7 @@ export default {
       line-height: 48px;
       background: #1f3252;
       .icon{
-        background:url('./icon.svg') no-repeat;
+        background:url(./assets/icon.svg) no-repeat;
         background-size: auto;
         background-position: 27px center;
         display:block;
