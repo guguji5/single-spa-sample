@@ -1,0 +1,29 @@
+html,body{
+  height: 100%;
+}
+
+.wrapper{
+  height: 100%;
+  display: flex;
+}
+
+#content{
+  min-width:1000px;
+  border:1px solid red;
+  overflow: auto;
+  box-sizing: border-box;
+  height: calc(100% - 48px);
+  padding: 20px 32px;
+  flex-grow:1;
+  margin-top: 48px;
+}
+
+#nav{
+  position: fixed;
+  top:5px;
+  right:10px;
+}
+
+.indent{
+  text-indent: 20px;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>single-spa MIS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="importmap-type" content="systemjs-importmap">
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "app1": "http://localhost:8081/app.js",
+          "app2": "http://localhost:8082/app.js",
+          "menu": "http://localhost:9092/app.js",
+          "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js",
+          "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js",
+          "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.0.7/dist/vue-router.min.js",
+          "element": "https://cdn.jsdelivr.net/npm/element-ui/lib/index.js"
+        }
+      }
+    </script>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js" as="script" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js" as="script" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/element-ui/lib/index.js" as="script" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_269744_o4sjqo084r.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://unpkg.com/import-map-overrides@1.7.2/dist/import-map-overrides.js"></script>
+    <script src="./system.min.js"></script>
+    <script src="./amd.min.js"></script>
+    <script src="./extras/named-exports.js"></script>
+    <script src="./extras/named-register.min.js"></script>
+    <script src="./extras/use-default.min.js"></script>
+  </head>
+  <body>
+    
+    <div class="wrapper">
+      <div id="menu"></div>
+      <div id="content">
+        <a href="/app1" style="padding:5px 10px;">go to app1</a>
+        <a href="/app2" style="padding:5px 10px;">go to app2</a>
+        <a href="/app2#/about" style="padding:5px 10px;">go to app2 about</a>
+
+        <ul>
+          <li>
+              <h3>If all the three use hase mode, I don't think we could use vue-router function or directive to navigate from nav to any app1, app2 or app2's about routing.</h3>
+          </li>
+          <li>
+              <h3>Currently, the app1 and app2 use hase mode vue-router, and the menu use the history.</h3>
+              <p class="indent">this above links could work,but the page will reload,that is not what we expect</p>
+              <p class="indent"> but the sidemenu and the button on the right-top could not work.</p>
+          </li>
+          <li>
+              <h3>If all the three use history mode, everything is ok, the cost is I have to adjust all applications routing from hash to history.</h3>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      (function() {
+        Promise.all([System.import('single-spa'), System.import('vue'), System.import('vue-router'), System.import('element')]).then(function (modules) {
+          var singleSpa = modules[0];
+          var Vue = modules[1];
+          var VueRouter = modules[2];
+          var ElementUI = modules[3];
+
+          window.singleSpa = singleSpa
+          window.vue = Vue
+          window.router = VueRouter
+          
+          Vue.use(ElementUI);
+          Vue.use(VueRouter)
+
+          singleSpa.registerApplication(
+            'app1',
+            () => System.import('app1'),
+            location => location.pathname.startsWith('/app1'),
+            {token:"234"}
+          )
+
+          singleSpa.registerApplication(
+            'app2',
+            () => System.import('app2'),
+            location => location.pathname.startsWith('/app2')
+          )
+
+          singleSpa.registerApplication(
+            'menu',
+            () => System.import('menu'),
+            location => location.pathname.startsWith('/')
+          )
+          
+          // singleSpa.registerApplication(
+          //   'mis-app2',
+          //   () => System.import('mis-app2'),
+          //   location => location.pathname.startsWith('/p2')
+          // )
+
+          singleSpa.start();
+        })
+      })()
+    </script>
+    <!-- See https://github.com/joeldenning/import-map-overrides#user-interface  -->
+    <import-map-overrides-full show-when-local-storage="overrides-ui"></import-map-overrides-full>
+
+
+    <script>
+      // function sayHello(name,time,sport){
+      //   console.log(`hi ${name}, what a nice ${time}.${sport? `let's go ${sport}`:''}`)
+      // }
+      // let GugujiSayHello = sayHello.bind(null,'guguji')
+      
+      // GugujiSayHello('morning','badminton')
+      // sayHello('damon','afternoon','swimming');
+    </script>
+  </body>
+</html>
