@@ -37,20 +37,25 @@
     <div class="wrapper">
       <div id="menu"></div>
       <div id="content">
-        <a href="/app1" style="padding:5px 10px;">go to app1</a>
-        <a href="/app2" style="padding:5px 10px;">go to app2</a>
-        <a href="/app2#/about" style="padding:5px 10px;">go to app2 about</a>
-
         <ul>
           <li>
-              <h3>If all the three use hase mode, I don't think we could use vue-router function or directive to navigate from nav to any app1, app2 or app2's about routing.</h3>
+              <h1>Question one:</h1>
+              <h3>Currently, There are three applications(app1,app2,menu) involved in this page. the app1 and app2 use hash mode vue-router, and the menu use the history.</h3>
+              <p class="indent">the sidemenu could navigate to app1 and app2. I can go into the "main" page and then click the "Go to app2 about page" button to the about page.</p>
+              <p class="indent">But the menu "about" doesn't works, my question is how to navigate to the app2's about routing directly with `this.$route.push`</p>
+              <h3>If all the three use history mode, everything is ok. But the cost is that I have to adjust all application routings.</h3>
+              <h3>If all the three use hash mode, the menu doesn't work at all</h3>
           </li>
           <li>
-              <h3>Currently, the app1 and app2 use hase mode vue-router, and the menu use the history.</h3>
-              <p class="indent">this above links could work,but the page will reload,that is not what we expect</p>
-              <p class="indent">the sidemenu could go to app1 and app2. But my question is how to navigate to the app2's about routing with `this.$route.push`</p>
+              <h1>Question two:</h1>
+              <h3>What strategy of sinlge-spa-vue replace DomEl or append it?</h3>
+              <p class="indent">When we go the app1 page from the menu, the content of app1 is appended to the dom#content. and then we go to app2 page, the dom is replaced by app2. </p>
           </li>
-
+          <li>
+              <h1>Question three:</h1>
+              <h3>When we type the url 'http://116.85.27.118:9090/app1#/' in the browser address, error occurs</h3>
+              <p class="indent">Is there any suggestion to avoid it ? </p>
+          </li>
         </ul>
       </div>
     </div>
