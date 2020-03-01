@@ -89,6 +89,7 @@ export default {
   methods:{
     handleSelect(index){
       let pathArr = index.split('-')
+      console.log(this.sideMenu, pathArr)
       let path = this.getRoute(this.sideMenu,pathArr)
       console.log(path)
       // location.href = `/p2#/${path}`
@@ -109,7 +110,10 @@ export default {
     font-family: "PingFang SC-Regular", "Helvetica Neue", "Hiragino Sans GB", "Arial", "Helvetica", "Microsoft Yahei UI", "Microsoft Yahei", "Simsun", "Sans-serif", "bcfont";
   }
   #app{
-    height:100%;
+    height:100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
   }
   .sidebar {
     float: left;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content-wrapper">
     App 2 is working
     <p>hay guguji. comment me on and off to see HMR</p>
     <router-view></router-view>

@@ -12,7 +12,6 @@ const vueLifecycles = singleSpaVue({
   appOptions: {
     render: (h) => h(App),
     router,
-    el:'#menu'
   },
   
 });

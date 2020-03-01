@@ -34,8 +34,7 @@
   </head>
   <body>
     
-    <div class="wrapper">
-      <div id="menu"></div>
+    <div class="wrapper content-wrapper">
       <div id="content">
         <a href="/app1" style="padding:5px 10px;">go to app1</a>
         <a href="/app2" style="padding:5px 10px;">go to app2</a>
@@ -61,6 +60,16 @@
           var Vue = modules[1];
           var VueRouter = modules[2];
           var ElementUI = modules[3];
+
+          // <a> elements ALWAYS reload the page, unless you add javascript.
+          // Vue's <router-link> does this for you, so it is preferred to use that for all links.
+          // However, you can also do it as shown below
+          const anchorEls = Array.from(document.querySelectorAll('a'));
+          anchorEls.forEach(anchorEl => {
+            anchorEl.addEventListener('click', evt => {
+              singleSpa.navigateToUrl(evt)
+            });
+          })
 
           window.singleSpa = singleSpa
           window.vue = Vue
