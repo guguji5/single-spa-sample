@@ -1,18 +1,14 @@
-html,body{
-  height: 100%;
+.content-wrapper {
+  margin-left: 184px;
 }
 
 .wrapper{
-  height: 100%;
   display: flex;
 }
 
 #content{
-  min-width:1000px;
-  border:1px solid red;
   overflow: auto;
   box-sizing: border-box;
-  height: calc(100% - 48px);
   padding: 20px 32px;
   flex-grow:1;
   margin-top: 48px;

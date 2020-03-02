@@ -15,7 +15,7 @@ let sideMenu=[
         },
         {
           'title':'about',
-          'route':{name: 'about'},
+          'route':{name: 'app2#/about'},
         },
     ]
     
