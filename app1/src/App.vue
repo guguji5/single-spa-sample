@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content-wrapper">
     App1 is working!
     <p>hey,damon. comment me on and off to see HMR</p>
     <el-button type="primary">main button to test element-ui component
